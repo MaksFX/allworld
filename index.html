@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Извинения</title>
+    <title>Посмотришь?</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
 
     <div id="content" class="content hidden">
         <header>
-            <h1>Прости меня...</h1>
+            <h1>Ты - мой мир</h1>
         </header>
 
         <main>
@@ -28,9 +28,8 @@
                 <div class="photo-item"><img src="photo4.jpg" alt="Фото 4"></div>
                 <div class="photo-item"><img src="photo5.jpg" alt="Фото 5"></div>
                 <div class="photo-item"><img src="photo6.jpg" alt="Фото 6"></div>
-				<div class="photo-item"><img src="photo7.jpg" alt="Фото 7"></div>
-				<div class="photo-item"><img src="photo8.jpg" alt="Фото 8"></div>
-				
+                <div class="photo-item"><img src="photo7.jpg" alt="Фото 7"></div>
+                <div class="photo-item"><img src="photo8.jpg" alt="Фото 8"></div>
             </section>
 
             <section class="poem">
@@ -49,8 +48,8 @@
                 <div class="photo-item"><img src="photo10.jpg" alt="Фото 10"></div>
                 <div class="photo-item"><img src="photo11.jpg" alt="Фото 11"></div>
                 <div class="photo-item"><img src="photo12.jpg" alt="Фото 12"></div>
-				<div class="photo-item"><img src="photo13.jpg" alt="Фото 13"></div>
-				<div class="photo-item"><img src="photo13.jpg" alt="Фото 14"></div>
+                <div class="photo-item"><img src="photo12.jpg" alt="Фото 13"></div>
+                <div class="photo-item"><img src="photo14.jpg" alt="Фото 14"></div>
             </section>
 
             <div class="lightbox" id="lightbox">
@@ -65,8 +64,11 @@
     </div>
 
     <audio id="backgroundMusic" src="your-music-file.mp3" loop></audio>
+
+    <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
@@ -79,6 +81,9 @@ body {
     padding: 0;
     box-sizing: border-box;
     color: #333;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -95,6 +100,8 @@ main {
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
 }
 
 .poem {
@@ -172,7 +179,6 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px 0;
-    margin-top: 20px;
     box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -221,7 +227,7 @@ footer {
     display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 2400px) {
     .poem {
         font-size: 1.2em;
     }
@@ -245,11 +251,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const lightboxContent = document.getElementById('lightbox-content');
     const close = document.getElementById('close');
     const images = document.querySelectorAll('.photo-item img');
+    const backgroundMusic = document.getElementById('backgroundMusic');
 
     // Show content if "Yes" is clicked
     yesBtn.addEventListener('click', function() {
         overlay.classList.add('hidden');
         content.classList.remove('hidden');
+        backgroundMusic.play();
     });
 
     // Redirect to Google if "No" is clicked
